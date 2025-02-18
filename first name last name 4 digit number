@@ -1,0 +1,67 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+int main() {
+    string firstName, lastName;
+    int number;
+
+    // Input: All on one line
+    //cout << "Enter your first name, last name, and a four-digit number: ";
+    string input;
+    getline(cin, input);  // Read the entire input line
+
+    // Use stringstream to parse the input
+    stringstream ss(input);
+    
+    // Extract first name, last name, and number from the input
+    ss >> firstName >> lastName >> number;
+
+    // Ensure the number is a valid four-digit number
+    //if (number < 1000 || number > 9999) {
+    //    cout << "Please enter a valid four-digit number!" << endl;
+    //    return 1;
+    //}
+
+    // Create the login name
+    string loginName = firstName.substr(0, min(6, (int)firstName.length())) + lastName[0] + "_" + to_string(number % 10);
+
+    // Output the login name
+    cout << "Your login name: " << loginName << endl;
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	string login;
+	string first;
+	string last;
+	int number;
+
+	
+    
+	
+	return 0;
+}
+*/
