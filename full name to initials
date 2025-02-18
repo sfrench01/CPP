@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string fullName;
+    //cout << "Enter full name: ";
+    getline(cin, fullName);
+
+    // Split the name into parts based on spaces
+    string parts[3];
+    int numParts = 0;
+    string currentWord = "";
+    for (char c : fullName) {
+        if (isspace(c)) {
+            parts[numParts++] = currentWord;
+            currentWord = "";
+        } else {
+            currentWord += c;
+        }
+    }
+    parts[numParts++] = currentWord; // Add the last word
+
+    // Determine the output format based on number of parts
+    if (numParts == 3) {
+        cout << parts[2] << ", " << parts[0][0] << "." << parts[1][0] << "." << endl;
+    } else if (numParts == 2) {
+        cout << parts[1] << ", " << parts[0][0] << "." << endl;
+    } else {
+        cout << "Invalid name format." << endl;
+    }
+
+    return 0;
+}
