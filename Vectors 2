@@ -1,0 +1,26 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+   vector<int> idLogs;
+   int numPeople;
+   int inputNum;
+   unsigned int i;
+
+   cin >> numPeople;
+
+   for (i = 0; i < numPeople; ++i) {
+      cin >> inputNum;
+      idLogs.push_back(inputNum);
+   }
+
+   /* Your code goes here */
+   for (i = 0; i < numPeople; ++i) {
+      if (idLogs[i] == 8) {
+         cout << idLogs[i] << endl;
+      }
+   }
+
+   return 0;
+}
