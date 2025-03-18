@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+   vector<int> runningListings;
+   int numDistance;
+   int inputNum;
+   int i;
+
+   cin >> numDistance;
+
+   for (i = 0; i < numDistance; ++i) {
+      cin >> inputNum;
+      runningListings.push_back(inputNum);
+   }
+
+   /* Your code goes here */
+   cout << "Even: ";
+   for (int i = 0; i < numDistance; ++i) {
+      if (runningListings[i] % 2 == 0) {
+         cout << runningListings[i] << ", ";
+      }
+   }
+   cout << endl;
+
+   // Output odd numbers
+   cout << "Odd: ";
+   for (int i = 0; i < numDistance; ++i) {
+      if (runningListings[i] % 2 != 0) {
+         cout << runningListings[i] << ", ";
+      }
+   }
+   cout << endl;
+
+   return 0;
+}
