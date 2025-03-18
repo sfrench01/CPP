@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+   int numDistance;
+   double firstDistance;
+	double middleDistance;
+   double lastDistance;
+   unsigned int i;
+
+   cin >> numDistance;
+   cin >> firstDistance;
+	cin >> middleDistance;
+   cin >> lastDistance;
+
+   /* Your code goes here */
+   vector<double> idListings(numDistance, 0);
+   idListings[0] = firstDistance;
+   idListings[numDistance / 2] = middleDistance;
+   idListings[numDistance - 1] = lastDistance;
+
+   for (i = 0; i < idListings.size(); ++i) {
+      cout << idListings.at(i) << " ";
+   }
+   cout << endl;
+
+   return 0;
+}
