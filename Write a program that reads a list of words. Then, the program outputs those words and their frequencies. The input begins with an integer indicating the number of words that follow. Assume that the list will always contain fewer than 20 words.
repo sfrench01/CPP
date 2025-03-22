@@ -1,0 +1,57 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() {
+
+   /* Type your code here. */
+   vector<string> word;  // To store the input words
+    vector<int> c;       // To store the frequency of each word
+    int s;               // Number of words
+    int counts = 0;      // Counter for frequency
+    string strng;        // Temporary string for input
+    string line;         // String to hold the entire input line
+
+    //cout << "Enter the size of string and words: ";  // Print message
+    getline(cin, line);  // Read the entire line of input
+    
+    // Extract the number of words from the input
+    int spacePos = line.find(" ");  // Find the first space
+    s = stoi(line.substr(0, spacePos));  // Convert the first part to an integer (number of words)
+    
+    // Extract the words from the input line
+    line = line.substr(spacePos + 1);  // Remove the first number and space
+    
+    // Now split the remaining line into words
+    int start = 0;
+    for (int i = 0; i < s; ++i) {
+        int end = line.find(" ", start);  // Find the next space
+        if (end == string::npos) {  // If no space is found, it's the last word
+            strng = line.substr(start);
+        } else {
+            strng = line.substr(start, end - start);  // Extract the word
+        }
+        word.push_back(strng);  // Add the word to the vector
+        start = end + 1;  // Move to the next word's starting position
+    }
+
+    // Count the frequency of each word
+    for (int i = 0; i < s; ++i) {
+        counts = 0;
+        for (int j = 0; j < word.size(); j++) {
+            if (word[j] == word[i]) {
+                counts++;
+            }
+        }
+        c.push_back(counts);  // Store the count in the vector
+    }
+
+    // Output the word and its frequency
+    for (int i = 0; i < s; ++i) {
+        cout << word[i] << " - " << c[i] << endl;  // Print word and frequency
+    }
+     
+
+   return 0;
+}
