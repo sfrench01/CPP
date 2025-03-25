@@ -1,0 +1,8 @@
+    int avg;
+    int sumTotal = 0;
+    for(int k=0; k < vectors.size(); ++k){
+        // not sure what to put here basically.
+        sumTotal += vectors[k];            
+    }
+    avg = sumTotal / vectors.size();
+    cout << avg << endl;
