@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector> 
+#include <string>
+#include <cctype>
+using namespace std;
+
+/* Define your function here */
+int GetWordFrequency(vector<string> wordsList, string currWord){
+    int frequency = 0;
+
+    string lowerCurrWord = currWord;
+    for (char& ch : lowerCurrWord){
+        ch = tolower(ch);
+    }
+    for (const string& words : wordsList){
+        string lowerWord = words;
+        for (char& ch : lowerWord){
+            ch = tolower(ch);
+        }
+        if (lowerWord == lowerCurrWord){
+            frequency++;
+        }
+    }
+    return frequency;
+}
+
+
+int main() {
+   /* Type your code here */
+   int numWords;
+   cin >> numWords;
+
+   vector<string> wordsList;
+
+   for (int i = 0; i < numWords; ++i){
+    string words;
+    cin >> words;
+    wordsList.push_back(words);
+   }
+
+   for (const string& words : wordsList){
+    cout << words << " " << GetWordFrequency(wordsList, words) << endl;
+   }
+
+   return 0;
+}
