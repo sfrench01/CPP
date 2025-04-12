@@ -1,0 +1,65 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Lecture {
+   public:
+      void SetDiscountAndTopic(char newDiscount, string newTopic);
+      void Print() const;
+   private:
+      char discount;
+      string topic;
+};
+
+void Lecture::SetDiscountAndTopic(char newDiscount, string newTopic) {
+	discount = newDiscount;
+	topic = newTopic;
+}
+
+void Lecture::Print() const {
+   cout << "Lecture discount: " << discount << ", Topic: " << topic << endl;
+}
+
+class Inventory {
+   public:
+      void InputLectures();
+      void PrintLectures();
+   private:
+      vector<Lecture> lectureList;
+};
+
+/* Your code goes here */
+void Inventory::InputLectures() {
+   Lecture currLecture;
+   char currDiscount;
+   string currTopic;
+
+   cin >> currDiscount;
+   while (currDiscount != 'Z') {
+      cin >> currTopic;
+      currLecture.SetDiscountAndTopic(currDiscount, currTopic);
+      lectureList.push_back(currLecture);
+      cin >> currDiscount;
+   }
+}
+
+
+
+void Inventory::PrintLectures() {
+   Lecture currLecture;
+   unsigned int i;
+
+   for (i = 0; i < lectureList.size(); ++i) {
+      currLecture = lectureList.at(i);
+      currLecture.Print();
+   }
+}
+
+int main() {
+   Inventory inventory;
+
+   inventory.InputLectures();
+   inventory.PrintLectures();
+ 
+   return 0;
+}
