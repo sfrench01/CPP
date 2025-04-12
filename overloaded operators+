@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+class Weight {
+   public:
+      Weight(int kilograms = 0, int grams = 0);
+      void Print() const;
+      Weight operator+(Weight rhs);
+   private:
+      int kg;
+      int g;
+};
+
+Weight::Weight(int kilograms, int grams) {
+   kg = kilograms;
+   g = grams;
+}
+
+// No need to accommodate for overflow or negative values
+Weight Weight::operator+(Weight rhs) {
+
+   /* Your code goes here */
+   int totalkg = kg + rhs.kg;
+   int totalg = g + rhs.g;
+   return Weight(totalkg, totalg);
+
+}
+
+void Weight::Print() const {
+   cout << kg << " kilograms, " << g << " grams";
+}
+
+int main() {
+   int kilograms1;
+	int grams1;
+	int kilograms2;
+	int grams2;
+   
+   cin >> kilograms1;
+	cin >> grams1;
+	cin >> kilograms2;
+	cin >> grams2;
+   
+   Weight weight1(kilograms1, grams1);
+	Weight weight2(kilograms2, grams2);
+   
+   Weight sum = weight1 + weight2;
+   
+   weight1.Print();
+	cout << endl;
+	weight2.Print();
+	cout << endl;
+	cout << "Sum: ";
+	sum.Print();
+	cout << endl;
+   
+   return 0;
+}
