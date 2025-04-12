@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Student {
+   public:
+      void SetDetails(string newName, char newGroup);
+		char GetGroup() const;
+		void Print() const;
+   private:
+      string name;
+      char group;
+};
+
+void Student::SetDetails(string newName, char newGroup) {
+   name = newName;
+   group = newGroup;
+}
+
+char Student::GetGroup() const {
+	return group;
+}
+
+void Student::Print() const {
+	cout << "Student: " << name << ", Group: " << group << endl;
+}
+
+int main() {
+   vector<Student> studentList;
+   Student currStudent;
+   string currName;
+   char currGroup;
+   int studentCount;
+   unsigned int i;
+
+   cin >> studentCount;
+   for (i = 0; i < studentCount; ++i) {
+      cin >> currName;
+      cin >> currGroup;
+      
+      currStudent.SetDetails(currName, currGroup);
+      studentList.push_back(currStudent);
+   }
+
+   /* Your code goes here */
+   for (const Student& student : studentList) {
+      if (student.GetGroup() == 'B') {
+         student.Print();
+      }
+   }
+
+   
+
+   return 0;
+}
