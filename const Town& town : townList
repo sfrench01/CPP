@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Town {
+   public:
+      void SetNameAndPopulation(string newName, int newPopulation);
+		void Print() const;
+   private:
+      string name;
+      int population;
+};
+
+void Town::SetNameAndPopulation(string newName, int newPopulation) {
+   name = newName;
+   population = newPopulation;
+}
+
+void Town::Print() const {
+	cout << "Town: " << name << ", Population: " << population << endl;
+}
+
+class SmallTowns {
+   public:
+      void InputTowns();
+      void PrintTowns();
+   private:
+      vector<Town> townList;
+};
+
+void SmallTowns::InputTowns() {
+   Town currTown;
+   string currName;
+   int currPopulation;
+   int townCount;
+   unsigned int i;
+  
+   cin >> townCount;
+   for (i = 0; i < townCount; ++i) {
+      cin >> currName;
+      cin >> currPopulation;
+      
+      currTown.SetNameAndPopulation(currName, currPopulation);
+      townList.push_back(currTown);
+   }     
+}
+
+/* Your code goes here */
+void SmallTowns::PrintTowns() {
+   for (const Town& town : townList) {
+      town.Print();
+   }
+}
+
+int main() {
+   SmallTowns smallTowns;
+  
+   smallTowns.InputTowns();
+   smallTowns.PrintTowns();
+   
+   return 0;
+}
