@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+class Cow {
+   public:
+      Cow(int ageValue, int weightValue);
+      void IncreaseAgeAndWeight();
+      void Print();
+   private:
+      int age;
+      int weight;
+};
+
+Cow::Cow(int ageValue, int weightValue) {
+   age = ageValue;
+   weight = weightValue;
+}
+
+void Cow::IncreaseAgeAndWeight() {
+	age = age * 2;
+	weight = weight * 2;
+   cout << "Cow's age and weight are increased." << endl;
+}
+
+void Cow::Print() {
+   cout << "Cow's age: " << age << endl;
+   cout << "Cow's weight: " << weight <<  endl;
+}
+
+int main() {
+
+   /* Additional variable declarations go here */
+   Cow* cowPtr;
+
+   int ageVal;
+   int weightVal;
+
+   cin >> ageVal;
+   cin >> weightVal;
+
+   /* Your code goes here */
+   cowPtr = new Cow(ageVal, weightVal);
+   cowPtr -> IncreaseAgeAndWeight();
+
+
+   cowPtr->Print();
+
+   delete cowPtr;
+
+   return 0;
+}
